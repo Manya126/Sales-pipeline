@@ -59,40 +59,6 @@ Snowflake Data Warehouse → Interactive Snowsight Dashboard
 
 ---
 
-## 🚀 How to Run
-
-### **Step 1: Upload Data**
-```bash
-aws s3 cp your_file.csv s3://etl-retail-data-rounit/raw/
-```
-
-### **Step 2: Automatic Processing**
-- Lambda triggers automatically on S3 upload
-- Data is cleaned and saved to `/cleaned/` folder
-
-### **Step 3: Load to Snowflake**
-```sql
-COPY INTO sales_cleaned FROM @cleaned_stage
-FILE_FORMAT = (TYPE = CSV SKIP_HEADER=1);
-```
-
-### **Step 4: View Dashboard**
-- Open Snowsight → "Retail ETL Dashboard"
-- View real-time analytics and insights
-
----
-
-## 🛠️ Tech Stack
-
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| **Storage** | AWS S3 | Raw and cleaned data storage |
-| **Processing** | AWS Lambda (Python) | ETL transformation |
-| **Data Warehouse** | Snowflake | Analytics and querying |
-| **Visualization** | Snowsight | Interactive dashboards |
-| **Orchestration** | S3 Event Triggers | Automated pipeline |
-
----
 
 ## 📁 Project Structure
 
@@ -118,43 +84,6 @@ etl-project/
 
 ---
 
-## 🚀 Quick Setup
-
-### **Prerequisites**
-- AWS Account (S3, Lambda access)
-- Snowflake account
-- Python 3.8+
-
-### **Installation**
-```bash
-git clone https://github.com/RounitR/etl-project.git
-cd etl-project
-pip install -r requirements.txt
-cp .env.template .env  # Configure your credentials
-```
-
-### **Generate Test Data**
-```bash
-cd scripts
-python generate_dirty_data.py
-```
-
----
-
-## 🔧 Configuration
-
-Create `.env` file with your credentials:
-```bash
-# AWS Configuration
-AWS_ACCESS_KEY_ID=your_access_key
-AWS_SECRET_ACCESS_KEY=your_secret_key
-AWS_REGION=ap-southeast-1
-
-# Snowflake Configuration
-SNOWFLAKE_ACCOUNT=your_account
-SNOWFLAKE_USER=your_username
-SNOWFLAKE_PASSWORD=your_password
-```
 
 ---
 
